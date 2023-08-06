@@ -1,2 +1,2 @@
---- PROGRAMMERS ARE ALLOWED TO UPDATE IT ---
----  ANY KIND OF ARTISTS ONLY READ THIS  ---
+# For artists: Update this file only when you complete a task
+# For programers: Update this only when you need art for something
