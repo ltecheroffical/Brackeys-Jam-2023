@@ -11,8 +11,17 @@ config_version=5
 [application]
 
 config/name="Brackeys Jam 2023"
+run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=500
+window/size/viewport_height=400
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 
 [rendering]
 
