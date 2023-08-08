@@ -22,11 +22,3 @@ position = Vector2(0, 300)
 [node name="HUD" parent="." instance=ExtResource("3_2ava8")]
 
 [node name="Player" parent="." instance=ExtResource("3_7ymvr")]
-
-[node name="CameraTransform" type="RemoteTransform2D" parent="Player"]
-remote_path = NodePath("../../Camera2D")
-update_rotation = false
-update_scale = false
-
-[connection signal="damaged" from="Player" to="HUD" method="_on_player_damaged"]
-[connection signal="healed" from="Player" to="HUD" method="_on_player_healed"]
