@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d07oq5233rq5p"]
+
+[ext_resource type="Script" path="res://assets/scripts/enemy.gd" id="1_n2x6i"]
+[ext_resource type="Texture2D" path="res://assets/kenney_pixel_platformer/Characters/character_0015.png" id="2_ea3ue"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sp3jr"]
+radius = 8.06226
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_n2x6i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ea3ue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_sp3jr")
