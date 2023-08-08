@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://deav6unxjn1lb"]
+[gd_scene load_steps=7 format=3 uid="uid://deav6unxjn1lb"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_g6gc1"]
-[ext_resource type="Texture2D" path="res://addons/kenney_pixel_platformer/Tilemap/tiles_packed.png" id="2_qustu"]
+[ext_resource type="Texture2D" uid="uid://ch4x1bgwqxegy" path="res://addons/kenney_pixel_platformer/Tilemap/tiles_packed.png" id="2_qustu"]
+[ext_resource type="PackedScene" uid="uid://b126nybs3fmq7" path="res://assets/objects/player.tscn" id="2_r101y"]
+[ext_resource type="Script" path="res://assets/scripts/player.gd" id="4_6663t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4myao"]
 resource_name = "Main"
@@ -197,3 +199,14 @@ script = ExtResource("1_g6gc1")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_0cqjb")
 format = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Player" parent="." instance=ExtResource("2_r101y")]
+script = ExtResource("4_6663t")
+
+[node name="CameraTransform" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+update_rotation = false
+update_scale = false
