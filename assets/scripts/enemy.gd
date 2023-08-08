@@ -15,8 +15,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
-	var motion := Vector2()
-	
 	if raycast.is_colliding():
 		change_direction()
 		
@@ -26,18 +24,18 @@ func _physics_process(delta):
 			return "left"
 		elif collision.normal.x < 0:
 			return "right"
-		
-	if not is_on_floor():
-		motion.y += gravity * delta
 	
-	motion.x = speed * direction
-	var collision := move_and_collide(motion)
+	
+	var collision = get_last_slide_collision()
 	
 	if collision and collision.get_collider():
 		var body = collision.get_collider()
 		
 		if body.is_in_group("player"):
 			body.hit()
+	
+	
+	move_and_slide()
 
 
 func change_direction():
