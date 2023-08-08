@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://tf5063ttseaj"]
+[gd_scene load_steps=5 format=3 uid="uid://djdiklud2eh7e"]
 
 [ext_resource type="PackedScene" path="res://assets/objects/tiles.tscn" id="1_0xf15"]
 [ext_resource type="Script" path="res://assets/scripts/game.gd" id="1_uvla5"]
