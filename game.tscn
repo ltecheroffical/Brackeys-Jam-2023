@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://deav6unxjn1lb"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_g6gc1"]
+[ext_resource type="PackedScene" uid="uid://b126nybs3fmq7" path="res://assets/objects/player.tscn" id="2_r101y"]
+[ext_resource type="PackedScene" uid="uid://ca4duqaqysgso" path="res://assets/tile.tscn" id="3_txlku"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_g6gc1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="Player" parent="." instance=ExtResource("2_r101y")]
+
+[node name="CameraTransform" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+update_rotation = false
+update_scale = false
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_txlku")]
+position = Vector2(7, 50)
+scale = Vector2(10.158, 0.39655)
