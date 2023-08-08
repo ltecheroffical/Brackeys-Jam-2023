@@ -1,17 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxjrvrt4cix2w"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_bxoay"]
-[ext_resource type="Texture2D" uid="uid://d3f461x5r342t" path="res://assets/icon.svg" id="2_d1l6a"]
+[ext_resource type="Texture2D" uid="uid://blcvuuakv07uf" path="res://assets/kenney_pixel_platformer/Characters/character_0000.png" id="2_xmj7u"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pw5af"]
-size = Vector2(128, 128)
+[sub_resource type="CircleShape2D" id="CircleShape2D_sp3jr"]
 
 [node name="Enemy" type="CharacterBody2D"]
-scale = Vector2(0.502645, 0.502645)
 script = ExtResource("1_bxoay")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_d1l6a")
+texture = ExtResource("2_xmj7u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_pw5af")
+shape = SubResource("CircleShape2D_sp3jr")
