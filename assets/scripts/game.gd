@@ -7,4 +7,4 @@ func _enter_tree():
 
 func _process(_delta):
 	if $Player.position.y > $KillPlane.position.y:
-		$Player.position = Vector2.ZERO
+		$Player.position = Vector2(0, -$KillPlane.position.y) # Sneaky
