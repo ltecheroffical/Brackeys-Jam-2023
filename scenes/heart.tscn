@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3m5mhkiqxw0m"]
+
+[ext_resource type="Texture2D" uid="uid://svwupr2n8dk0" path="res://assets/kenney_pixel_platformer/Tiles/tile_0044.png" id="1_1j0qb"]
+
+[node name="Heart" type="TextureRect"]
+texture = ExtResource("1_1j0qb")
+expand_mode = 2
