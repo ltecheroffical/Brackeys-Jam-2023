@@ -6,19 +6,8 @@
 
 [node name="Level" instance=ExtResource("1_udsp4")]
 
-[node name="Camera2D" parent="." index="0"]
-position = Vector2(350, 0)
-
 [node name="TileMap" parent="." index="2"]
 layer_0/tile_data = PackedInt32Array(131070, 65537, 4, 131071, 131073, 4, 65536, 131073, 4, 65537, 131073, 4, 65538, 131073, 4, 65539, 131073, 4, 65540, 131073, 4, 65541, 131073, 4, 65542, 131073, 4, 65543, 131073, 4, 65544, 131073, 4, 65545, 131073, 4, 65546, 131073, 4, 65547, 131073, 4, 65548, 131073, 4, 65549, 131073, 4, 65550, 131073, 4, 65551, 131073, 4, 65552, 131073, 4, 65553, 131073, 4, 65554, 131073, 4, 65555, 131073, 4, 65556, 196609, 4, -196602, 65537, 4, -196601, 131073, 4, -196600, 131073, 4, -196599, 131073, 4, -196598, 131073, 4, -196597, 196609, 4)
-
-[node name="Player" parent="." index="4"]
-position = Vector2(350, 0)
-
-[node name="CameraTransform" type="RemoteTransform2D" parent="Player" index="3"]
-remote_path = NodePath("../../Camera2D")
-update_rotation = false
-update_scale = false
 
 [node name="Pickup" parent="." index="5" instance=ExtResource("2_yg64m")]
 position = Vector2(162, -72)
