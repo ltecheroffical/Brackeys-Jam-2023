@@ -1,10 +1,7 @@
 extends CharacterBody2D
 
-
-@export var speed = 400.0
-
-var direction = 1
-
+@export var speed := 400
+var direction := 1
 
 func _physics_process(delta):
 	collide_with_wall()
