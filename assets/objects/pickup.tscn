@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://d33iyehn3qmd5"]
 
-[ext_resource type="Script" path="res://scripts/pickup.gd" id="1_4i7sq"]
+[ext_resource type="Script" path="res://assets/scripts/pickup.gd" id="1_4i7sq"]
 [ext_resource type="Texture2D" uid="uid://spmcqfykyln1" path="res://resources/Heart.tres" id="2_3jjay"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kwu32"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://tf5063ttseaj"]
+
+[ext_resource type="PackedScene" uid="uid://b56yjpk21p8v2" path="res://assets/objects/tiles.tscn" id="1_0xf15"]
+[ext_resource type="Script" path="res://assets/scripts/game.gd" id="1_uvla5"]
+[ext_resource type="PackedScene" uid="uid://18c4om6sxewt" path="res://assets/objects/hud.tscn" id="3_2ava8"]
+[ext_resource type="PackedScene" uid="uid://b126nybs3fmq7" path="res://assets/objects/player.tscn" id="3_7ymvr"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_uvla5")
+
+[node name="TileMap" parent="." instance=ExtResource("1_0xf15")]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+height = 0.2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="KillPlane" type="Marker2D" parent="."]
+position = Vector2(0, 300)
+
+[node name="HUD" parent="." instance=ExtResource("3_2ava8")]
+
+[node name="Player" parent="." instance=ExtResource("3_7ymvr")]
+
+[node name="CameraTransform" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+update_rotation = false
+update_scale = false
+
+[connection signal="damaged" from="Player" to="HUD" method="_on_player_damaged"]
+[connection signal="healed" from="Player" to="HUD" method="_on_player_healed"]

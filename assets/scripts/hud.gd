@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @export var heart_scene: PackedScene
 @export var health := 4
-@onready var health_bar := $TopPanel/HealthBar
+@onready var health_bar := $HealthBar
 
 func _ready() -> void:
 	for i in range(health):
