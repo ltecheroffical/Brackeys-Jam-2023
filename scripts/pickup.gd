@@ -1,4 +1,5 @@
 extends Area2D
+class_name Pickup
 
 signal picked_up(type: String)
 
@@ -6,11 +7,10 @@ signal picked_up(type: String)
 @export var pickup_resource: CanvasTexture
 
 @onready var animation_player := $AnimationPlayer
+@onready var collision := $CollisionShape2D
 
-func _ready() -> void:
-	await get_tree().create_timer(1).timeout
-	_on_player_pick_up()
-
-func _on_player_pick_up():
+func _on_body_entered(body: Player) -> void:
 	emit_signal("picked_up", pickup_resource.resource_name)
+	if pickup_resource.resource_name == "Health":
+		body.heal()
 	animation_player.play("pickup")
