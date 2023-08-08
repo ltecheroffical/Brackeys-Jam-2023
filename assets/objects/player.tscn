@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b126nybs3fmq7"]
+[gd_scene load_steps=5 format=3 uid="uid://b126nybs3fmq7"]
 
 [ext_resource type="Texture2D" uid="uid://d3f461x5r342t" path="res://icon.svg" id="1_8j3p8"]
+[ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_o88ps"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hv71g"]
 size = Vector2(64, 63)
 
+[sub_resource type="LabelSettings" id="LabelSettings_ckudc"]
+font_size = 31
+
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_o88ps")
 
 [node name="Texture" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -13,3 +18,11 @@ texture = ExtResource("1_8j3p8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hv71g")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 39.0
+offset_top = -83.0
+offset_right = 72.0
+offset_bottom = -36.0
+text = "5s"
+label_settings = SubResource("LabelSettings_ckudc")
