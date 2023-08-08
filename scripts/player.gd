@@ -1,36 +1,47 @@
 extends CharacterBody2D
 class_name Player
 
+@export var speed = 200.0
+@export var jump_velocity = -250.0
+@export var coyote_time = 0.2
+
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var air_time: float = 0.0
+
 signal healed(amount: int)
 signal damaged(amount: int)
 
 @onready var timer := $Timer
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
+func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
+	
+	if is_on_floor():
+		air_time = 0.0
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		air_time += delta
+
+	if Input.is_action_just_pressed("move_jump") and can_jump():
+		velocity.y = jump_velocity
+		air_time = 10
+
+	var direction = Input.get_axis("move_left", "move_right")
+	if direction:
+		$Texture.flip_h = direction > -1
+
+		if is_on_floor():
+			$Texture.play("walk")
+
+		velocity.x = direction * speed
+	else:
+		$Texture.play("idle")
+		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
+
+func can_jump() -> bool:
+	return is_on_floor() or air_time < coyote_time
 
 func hit(amount := 1):
 	if not timer.time_left:

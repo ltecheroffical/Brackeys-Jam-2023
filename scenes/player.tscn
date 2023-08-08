@@ -1,33 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxd3mfto3n6sh"]
+[gd_scene load_steps=6 format=3 uid="uid://b126nybs3fmq7"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_3apie"]
-[ext_resource type="Texture2D" uid="uid://blcvuuakv07uf" path="res://assets/kenney_pixel_platformer/Characters/character_0000.png" id="2_x1kpb"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_0cvcl"]
+[ext_resource type="Texture2D" uid="uid://m7rajb1jjijn" path="res://addons/kenney_pixel_platformer/Characters/character_0000.png" id="1_ac1gd"]
+[ext_resource type="Texture2D" uid="uid://bcbytxs7hx2mo" path="res://addons/kenney_pixel_platformer/Characters/character_0001.png" id="2_xv4lm"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sp3jr"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8tli3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ac1gd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ac1gd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xv4lm")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
-[sub_resource type="Animation" id="Animation_5fsig"]
-resource_name = "idle"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_r2ijb"]
-_data = {
-"idle": SubResource("Animation_5fsig")
-}
+[sub_resource type="CircleShape2D" id="CircleShape2D_bxr7v"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 30
-script = ExtResource("1_3apie")
+script = ExtResource("1_0cvcl")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_x1kpb")
+[node name="Texture" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8tli3")
+animation = &"walk"
+frame_progress = 0.507301
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_sp3jr")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_r2ijb")
-}
+shape = SubResource("CircleShape2D_bxr7v")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
