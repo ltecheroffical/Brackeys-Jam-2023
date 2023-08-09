@@ -20,6 +20,8 @@ var timeSinceLeftGround: float = 0.0
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		
+		$Texture.play("idle")
 	
 	if is_on_floor():
 		timeSinceLeftGround = 0.0
