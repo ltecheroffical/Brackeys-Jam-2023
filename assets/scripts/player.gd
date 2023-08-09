@@ -10,7 +10,7 @@ const SPEED = 50.0
 const DASH_SPEED = 1000
 
 const JUMP_VELOCITY = 450.0
-const COYOTE_TIME = 0.2
+const COYOTE_TIME = 0.25
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
