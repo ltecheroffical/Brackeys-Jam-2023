@@ -7,21 +7,41 @@ signal damaged(amount: int)
 
 
 const SPEED = 50.0
+const DASH_SPEED = 1000
+
 const JUMP_VELOCITY = 450.0
 const COYOTE_TIME = 0.2
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 var timeSinceLeftGround: float = 0.0
+
+var dash_pressed = false
+var dash_direction = 0
 
 
 @onready var damage_timer := $DamageTimer
+
+
+func _process(_delta):
+	if not Input.is_action_pressed("dash") and dash_pressed:
+		dash_pressed = false
+
 
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
 		$Texture.play("idle")
+	
+	
+	if not $DashTime.is_stopped():
+		velocity.x = dash_direction * DASH_SPEED
+		$Texture.modulate = Color(255, 255, 255, 1)
+	else:
+		$Texture.modulate = Color.WHITE
+	
 	
 	if is_on_floor():
 		timeSinceLeftGround = 0.0
@@ -33,13 +53,19 @@ func _physics_process(delta):
 		timeSinceLeftGround = 10
 
 	var direction = Input.get_axis("left", "right")
-	if direction:
+	if direction and $DashTime.is_stopped():
 		$Texture.flip_h = direction > -1
+		
+		if Input.is_action_pressed("dash") and not dash_pressed:
+			$DashTime.start()
+			dash_direction = direction
+		
+			dash_pressed = true
+		else:
+			if is_on_floor():
+				$Texture.play("walk")
 
-		if is_on_floor():
-			$Texture.play("walk")
-
-		velocity.x = direction * SPEED
+			velocity.x = direction * SPEED
 	else:
 		$Texture.play("idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
