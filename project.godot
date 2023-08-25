@@ -11,16 +11,14 @@ config_version=5
 [application]
 
 config/name="Platformer"
-run/main_scene="res://levels/level_1.tscn"
+run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://assets/kenney_pixel_platformer/Background/background_0004.png"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/viewport_width=500
+window/size/viewport_height=400
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0

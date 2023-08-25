@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://du21ebn6stqik"]
+
+[ext_resource type="Environment" uid="uid://fayr33xrtdoa" path="res://env.tres" id="1_l2tbk"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_sf06q"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_sf06q")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_l2tbk")
